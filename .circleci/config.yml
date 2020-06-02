@@ -1,8 +1,10 @@
 version: 2.1
 workflows:
   version: 2
-  just_push:
-      jobs:
+  pantheon_process:
+    jobs:      
+    - selenium_install:
+    - pantheon/push:
       - pantheon/push
 orbs:
   pantheon: pantheon-systems/pantheon@0.2.0 

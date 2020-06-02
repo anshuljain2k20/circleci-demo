@@ -8,7 +8,7 @@ CONTENTS OF THIS FILE
  * Appearance
  * Developing for Drupal
 
-ABOUT DRUPAL
+ABOUT DRUPAL || TEST CIRCLECI
 ------------
 
 Drupal is an open source content management platform supporting a variety of
