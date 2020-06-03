@@ -4,7 +4,7 @@ workflows:
   build_push_test:
     jobs:
       - pantheon/push
-          checkout: false
+        checkout: false
       - playground/backstop:
           requires:
             - pantheon/push
