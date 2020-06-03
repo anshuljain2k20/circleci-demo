@@ -1,8 +1,38 @@
 version: 2.1
 workflows:
   version: 2
-  just_push:
-      jobs:
+  build_push_test:
+    jobs:
       - pantheon/push
+          checkout: false
+      - playground/backstop:
+          requires:
+            - pantheon/push
+      - backup_test_env:
+          requires:
+          - playground/backstop
+          filters:
+            branches:
+              only: "master"
+      - approve_dev_env:
+          type: approval
+          requires:
+          - playground/backstop
+          filters:
+            branches:
+              only: "master"
+      - deploy_to_test:
+          requires:
+          - approve_dev_env
+          filters:
+            branches:
+              only: "master"
+      - approve_test_env:
+          type: approval
+          requires:
+          - deploy_to_test
+          filters:
+            branches:
+              only: "master"
 orbs:
   pantheon: pantheon-systems/pantheon@0.2.0 
