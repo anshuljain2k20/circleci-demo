@@ -3,6 +3,16 @@ workflows:
   version: 2
   build_push_test:
     jobs:
+      - check_env_vars
       - pantheon/push      
 orbs:
-  pantheon: pantheon-systems/pantheon@0.2.0 
+  pantheon: pantheon-systems/pantheon@0.2.0
+
+jobs:
+  # This job compiles Sass and then saves (persists) the directory
+  # containing the compiled css for reuse in the pantheon/push job.
+  check_env_vars:
+    steps:
+    - run:
+        name: Check for enviornment variables from github
+        command: echo ${CIRCLE_PULL_REQUEST##*/}
