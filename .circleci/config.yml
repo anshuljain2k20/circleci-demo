@@ -10,6 +10,6 @@ orbs:
 jobs:
   check_env_vars:
     steps:
-    - run:
+      - run:
         name: Check for enviornment variables from github
         command: echo ${CIRCLE_PULL_REQUEST##*/}
