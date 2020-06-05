@@ -7,10 +7,7 @@ workflows:
       - pantheon/push      
 orbs:
   pantheon: pantheon-systems/pantheon@0.2.0
-
 jobs:
-  # This job compiles Sass and then saves (persists) the directory
-  # containing the compiled css for reuse in the pantheon/push job.
   check_env_vars:
     steps:
     - run:
