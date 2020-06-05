@@ -9,6 +9,8 @@ orbs:
   pantheon: pantheon-systems/pantheon@0.2.0
 jobs:
   check_env_vars:
+    docker:
+    - image: quay.io/pantheon-public/build-tools-ci:5.x
     steps:
       - run:
         name: Check for enviornment variables from github
