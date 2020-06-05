@@ -13,7 +13,8 @@ jobs:
     - image: quay.io/pantheon-public/build-tools-ci:5.x
     steps:
     - run:
-        name: Authenticate with Pantheon's CLI using a machine token
-        command: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
-    - run: echo ${CIRCLE_PULL_REQUEST##*/};
-    - run: echo $CI_PULL_REQUEST;
+        name: CI Pull Request Number
+        command: echo ${CIRCLE_PULL_REQUEST##*/}
+    - run:
+        name: CI Pull Request Number AGAIN
+        command:  echo $CI_PULL_REQUEST;
