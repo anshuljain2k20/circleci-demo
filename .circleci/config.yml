@@ -3,15 +3,16 @@ workflows:
   version: 2
   build_push_test:
     jobs:
-      - check_env_vars
       - pantheon/push
+      - backup_test_env   
 orbs:
-  pantheon: pantheon-systems/pantheon@0.2.0
+  pantheon: pantheon-systems/pantheon@0.2.0 
 jobs:
-  check_env_vars:
+  backup_test_env:
     docker:
     - image: quay.io/pantheon-public/build-tools-ci:5.x
     steps:
-      - run:
-        name: Check for enviornment variables from github
-        command: echo ${CIRCLE_PULL_REQUEST##*/}
+    - run:
+        name: Authenticate with Pantheon's CLI using a machine token
+        command: terminus -n auth:login --machine-token="$TERMINUS_TOKEN"
+    - run: echo ${CIRCLE_PULL_REQUEST##*/}
