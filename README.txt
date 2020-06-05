@@ -1,6 +1,6 @@
 
-CONTENTS OF THIS FILE
----------------------
+
+CONTENTS OF THIS FILE | PR
 
  * About Drupal
  * Configuration and features
